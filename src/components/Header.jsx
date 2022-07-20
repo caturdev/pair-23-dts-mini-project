@@ -1,7 +1,24 @@
 import { AppBar, Avatar, Box, IconButton, Toolbar, Typography } from "@mui/material";
 import { Container } from "@mui/system";
+import { getAuth, signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { useSnackbar } from "notistack";
 
 const Header = () => {
+
+    const { enqueueSnackbar } = useSnackbar();
+    const navigate = useNavigate();
+
+    const onSignOut = async () => {
+        try {
+            await signOut(getAuth());
+            enqueueSnackbar('Selamat tinggal', { variant: 'success' });
+            navigate('/');
+        } catch (error) {
+            console.log('error : ', error);
+        }
+    }
+
     return (
         <AppBar position="static" color="secondary">
             <Container maxWidth="xl">
@@ -20,7 +37,7 @@ const Header = () => {
                         </Typography>
                     </Box>
                     <Box>
-                        <IconButton>
+                        <IconButton onClick={onSignOut}>
                             <Avatar />
                         </IconButton>
                     </Box>
