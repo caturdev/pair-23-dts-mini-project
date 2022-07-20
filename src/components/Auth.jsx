@@ -14,7 +14,8 @@ const Auth = ({ children }) => {
 
     return (
         <Fragment>
-            {auth.currentUser ? children : null}
+            {children}
+            {/* {auth.currentUser ? children : null} */}
         </Fragment>
     )
 }
