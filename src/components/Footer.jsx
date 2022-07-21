@@ -7,28 +7,9 @@ const Footer = () => {
             <Box p={10} sx={{ bgcolor: '#222831' }}>
                 <Container>
                     <Box>
-                        <Grid container spacing={2}>
-                            <Grid item xs={3}>
-                                <Box >
-                                    Logo
-                                </Box>
-                            </Grid>
-                            <Grid item xs={3}>
-                                <Box>
-                                    <Typography> Tentang </Typography>
-                                </Box>
-                            </Grid>
-                            <Grid item xs={3}>
-                                <Box>
-                                    <Typography> Tentang </Typography>
-                                </Box>
-                            </Grid>
-                            <Grid item xs={3}>
-                                <Box>
-                                    <Typography> Tentang </Typography>
-                                </Box>
-                            </Grid>
-                        </Grid>
+                        <Typography align="center" variant="body1" color="GrayText"> REA2 PRO DTS 2022 - NUR WAHYU CATUR WICAKSONO - 152235865101-459 </Typography>
+                        <Typography align="center" variant="body2" color="GrayText"> &bull; </Typography>
+                        <Typography align="center" variant="body2" color="GrayText"> MINI PRO - PAIR 23 </Typography>
                     </Box>
                 </Container>
             </Box>

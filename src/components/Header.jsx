@@ -1,13 +1,34 @@
 import { AppBar, Avatar, Box, IconButton, Toolbar, Typography } from "@mui/material";
 import { Container } from "@mui/system";
-import { getAuth, signOut } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
+import { useEffect, useState } from "react";
 
 const Header = () => {
 
     const { enqueueSnackbar } = useSnackbar();
     const navigate = useNavigate();
+    const [user, setUser] = useState({
+        isLoggedIn: null,
+        name: null,
+        img: null,
+    });
+
+    useEffect(() => {
+        const auth = getAuth();
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setUser((s) => ({
+                    ...s,
+                    isLoggedIn: true,
+                    name: user.displayName,
+                    img: user.photoURL,
+                }));
+                console.log(user);
+            }
+        });
+    }, []);
 
     const onSignOut = async () => {
         try {
@@ -36,11 +57,15 @@ const Header = () => {
                             NONTON-IN
                         </Typography>
                     </Box>
-                    <Box>
-                        <IconButton onClick={onSignOut}>
-                            <Avatar />
-                        </IconButton>
-                    </Box>
+                    {user.isLoggedIn ?
+                        <Box>
+                            <IconButton onClick={onSignOut}>
+                                <Avatar />
+                            </IconButton>
+                        </Box>
+                        :
+                        <Box></Box>
+                    }
                 </Toolbar>
             </Container>
         </AppBar>

@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import { Card, CardMedia } from "@mui/material";
+import { Box, Card, CardContent, CardMedia, Divider, Rating, Typography } from "@mui/material";
 
 const Item = ({ data }) => {
     const navigate = useNavigate();
 
     return (
         <Card
-            sx={{ cursor: 'pointer' }}
+            sx={{ cursor: 'pointer', bgcolor: '#222831' }}
             onClick={() => navigate(`/movie/${data.id}`)}
         >
             <CardMedia
@@ -15,6 +15,14 @@ const Item = ({ data }) => {
                 image={`https://image.tmdb.org/t/p/w500/${data.poster_path}`}
                 alt="green iguana"
             />
+            <CardContent>
+                <Box>
+                    <Rating size="small" name="read-only" value={data.vote_average / 10 * 5} readOnly />
+                    <Divider sx={{ marginY: 0.2 }} />
+                    <Typography variant="body1" noWrap> {data.original_title} </Typography>
+                    <Typography variant="caption"> {data.release_date} </Typography>
+                </Box>
+            </CardContent>
         </Card>
     )
 }

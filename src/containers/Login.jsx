@@ -44,7 +44,8 @@ const Registration = () => {
 									<Box p={2}>
 										<Box my={3}>
 											<Box mb={5}>
-												<Typography variant="h6" component="h1"> Login </Typography>
+												<Typography variant="h5" component="h1"> Selamat Datang </Typography>
+												<Typography variant="body2" color="GrayText"> Login untuk melanjutkan </Typography>
 											</Box>
 											<Box>
 												<TextField
