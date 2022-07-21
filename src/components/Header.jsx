@@ -1,11 +1,11 @@
-import { AppBar, Avatar, Box, IconButton, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ logoLink }) => {
 
     const { enqueueSnackbar } = useSnackbar();
     const navigate = useNavigate();
@@ -59,9 +59,7 @@ const Header = () => {
                     </Box>
                     {user.isLoggedIn ?
                         <Box>
-                            <IconButton onClick={onSignOut}>
-                                <Avatar />
-                            </IconButton>
+                            <Button onClick={onSignOut}>Logout</Button>
                         </Box>
                         :
                         <Box></Box>

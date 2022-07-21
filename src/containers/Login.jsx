@@ -1,4 +1,4 @@
-import { Box, Button, Card, Grid, TextField, Typography } from "@mui/material";
+import { Box, Button, Card, Divider, Grid, TextField, Typography } from "@mui/material";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useSnackbar } from "notistack";
 import { Fragment, useState } from "react";
@@ -44,8 +44,8 @@ const Registration = () => {
 									<Box p={2}>
 										<Box my={3}>
 											<Box mb={5}>
-												<Typography variant="h5" component="h1"> Selamat Datang </Typography>
-												<Typography variant="body2" color="GrayText"> Login untuk melanjutkan </Typography>
+												<Typography variant="h5" component="h1" align="center"> Selamat Datang </Typography>
+												<Typography variant="body2" color="GrayText" align="center"> Login untuk melanjutkan </Typography>
 											</Box>
 											<Box>
 												<TextField
@@ -68,7 +68,9 @@ const Registration = () => {
 												/>
 											</Box>
 											<Box mt={5}>
-												<Button color="info" variant="contained" fullWidth type="submit"> Submit </Button>
+												<Button color="info" variant="contained" fullWidth type="submit"> login </Button>
+												<Divider sx={{ marginY: 2, color: 'white' }}> <Typography color="GrayText">atau</Typography> </Divider>
+												<Button color="secondary" variant="contained" fullWidth type="submit" onClick={() => navigate('/registration')}> registrasi </Button>
 											</Box>
 										</Box>
 									</Box>
