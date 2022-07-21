@@ -34,13 +34,11 @@ const Main = () => {
                                     <CardContent sx={{ textAlign: 'center' }}>
                                         <Typography align="center" variant="h4" component="h1"> Selamat Datang </Typography>
                                         <Typography align="center" variant="body1"> Temukan informasi-informasi menarik seputar film terkini di sini </Typography>
-                                        <Box>
-                                            <div className="container" ref={container}></div>
-                                        </Box>
+                                        <Box ref={container} />
                                         <Box mt={5}>
                                             <Button fullWidth variant="contained" color="info" onClick={() => { navigate('/login') }}> Login </Button>
                                             <Divider sx={{ marginY: 2, color: 'white' }}> <Typography color="GrayText">atau</Typography> </Divider>
-                                            <Button fullWidth variant="contained" color="info" onClick={() => { navigate('/login') }}> registrasi </Button>
+                                            <Button fullWidth variant="contained" color="info" onClick={() => { navigate('/registration') }}> registrasi </Button>
                                         </Box>
                                     </CardContent>
                                 </Card>
@@ -49,7 +47,7 @@ const Main = () => {
                     </Section>
                 </MainComponent>
             </Body>
-        </Fragment>
+        </Fragment >
     )
 }
 
