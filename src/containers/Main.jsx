@@ -1,13 +1,26 @@
 import MainComponent from "../components/Main";
-import { Fragment } from "react"
+import { Fragment, useEffect, useRef } from "react"
 import Body from "../components/Body"
 import Header from "../components/Header"
 import Section from "../components/Section"
-import { Box, Button, Card, CardContent, Grid, Typography } from "@mui/material";
+import { Box, Button, Card, CardContent, Divider, Grid, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import Lottie from "lottie-web";
 
 const Main = () => {
     const navigate = useNavigate();
+
+    const container = useRef(null);
+
+    useEffect(() => {
+        Lottie.loadAnimation({
+            container: container.current,
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            animationData: require('../asset/animation/45732-cinema-animation.json')
+        });
+    }, []);
 
     return (
         <Fragment>
@@ -21,8 +34,13 @@ const Main = () => {
                                     <CardContent sx={{ textAlign: 'center' }}>
                                         <Typography align="center" variant="h4" component="h1"> Selamat Datang </Typography>
                                         <Typography align="center" variant="body1"> Temukan informasi-informasi menarik seputar film terkini di sini </Typography>
+                                        <Box>
+                                            <div className="container" ref={container}></div>
+                                        </Box>
                                         <Box mt={5}>
-                                            <Button variant="contained" color="primary" onClick={() => { navigate('/login') }}> Login </Button>
+                                            <Button fullWidth variant="contained" color="info" onClick={() => { navigate('/login') }}> Login </Button>
+                                            <Divider sx={{ marginY: 2, color: 'white' }}> <Typography color="GrayText">atau</Typography> </Divider>
+                                            <Button fullWidth variant="contained" color="info" onClick={() => { navigate('/login') }}> registrasi </Button>
                                         </Box>
                                     </CardContent>
                                 </Card>
